@@ -29,6 +29,10 @@ class LoginScreen extends StatelessWidget {
 
       if (response.statusCode == 201 && response.data["status"] == 200) {
         await _storeUserData(response.data);
+
+        // Call app open API after successful login
+        await _callAppOpenAPI(allInfo);
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -39,6 +43,50 @@ class LoginScreen extends StatelessWidget {
     } catch (error) {
       print("Sign-In error: $error");
     }
+  }
+
+  Future<void> _callAppOpenAPI(Map<String, String> allInfo) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? userId = prefs.getString('userId');
+      String? securityToken = prefs.getString('token');
+
+      if (userId == null || securityToken == null) {
+        print("User ID or security token is missing");
+        return;
+      }
+
+      String versionName = allInfo['versionName'] ?? "";
+      String versionCode = allInfo['versionCode'] ?? "";
+
+      final Dio dio = Dio();
+      final response = await dio.post(
+        "${allInfo["baseUrl"]}appOpen",
+        data: {
+          "userId": userId,
+          "securityToken": securityToken,
+          "versionName": versionName,
+          "versionCode": versionCode,
+        },
+      );
+
+      if (response.statusCode == 201 && response.data["status"] == 200) {
+        await _saveUserData(prefs, response.data);
+      } else {
+        print("Error during app open API call: ${response.data['message']}");
+      }
+    } catch (error) {
+      print("App open API error: $error");
+    }
+  }
+
+  Future<void> _saveUserData(
+      SharedPreferences prefs, Map<String, dynamic> data) async {
+    prefs.setString("walletBalance", data['walletBalance'].toString());
+    prefs.setString("name", data['name'].toString());
+    prefs.setString("image", data['image'].toString());
+    prefs.setString("email", data['email'].toString());
+    prefs.setString("referCode", data['referCode']);
   }
 
   Future<String> _getAdvertisingId() async {

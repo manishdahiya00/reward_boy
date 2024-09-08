@@ -229,8 +229,8 @@ class _WalletScreenState extends State<WalletScreen> {
                             child: Stack(
                               fit: StackFit.expand,
                               children: [
-                                Image.network(
-                                  payout["image"],
+                                Image(
+                                  image: NetworkImage(payout["image"]),
                                   fit: BoxFit.cover,
                                 ),
                                 Container(

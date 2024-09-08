@@ -73,7 +73,7 @@ class OfferDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              "Coins: ₹ ${offer['amount'] ?? '0'}",
+              "Amount: ₹ ${offer['amount'] ?? '0'}",
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,

@@ -13,7 +13,7 @@ class Utils {
     String versionName = 'Unknown';
     String versionCode = 'Unknown';
 
-    String baseUrl = "http://192.168.145.141:3000/api/v1/";
+    String baseUrl = "https://bf11-152-58-102-169.ngrok-free.app/api/v1/";
 
     if (deviceInfo is AndroidDeviceInfo) {
       deviceId = deviceInfo.model;

@@ -16,12 +16,20 @@ class _ReferEarnScreenState extends State<ReferEarnScreen> {
   @override
   void initState() {
     super.initState();
-    _fetchReferCode();
+    _setInitialReferCode();
   }
 
-  Future<void> _fetchReferCode() async {
+  Future<void> _setInitialReferCode() async {
     final prefs = await SharedPreferences.getInstance();
-    final referCode = prefs.getString('referCode') ?? '';
+    String referCode = prefs.getString('referCode') ?? '';
+
+    if (referCode.isEmpty) {
+      // Set default code if none is found
+      await prefs.setString('referCode', 'DEFAULTCODE123');
+      referCode = 'DEFAULTCODE123';
+    }
+
+    // Update the state with the fetched refer code
     setState(() {
       _referCode = referCode;
     });

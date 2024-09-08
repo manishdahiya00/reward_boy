@@ -28,10 +28,38 @@ class _SpinWheelScreenState extends State<SpinWheelScreen> {
 
   Future<void> _loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (await _has24HoursPassed()) {
+      spinsLeft = 3;
+      await _updateSpinsLeft(spinsLeft);
+      await _updateLastSpinTimestamp();
+    } else {
+      spinsLeft = prefs.getInt('spinsLeft') ?? 3;
+    }
+
     setState(() {
       _walletBalance = prefs.getString('walletBalance') ?? '0';
-      spinsLeft = prefs.getInt('spinsLeft') ?? 3; // Load spinsLeft
     });
+  }
+
+  Future<void> _updateLastSpinTimestamp() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('lastSpinTime', DateTime.now().millisecondsSinceEpoch);
+  }
+
+  Future<bool> _has24HoursPassed() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? lastSpinTime = prefs.getInt('lastSpinTime');
+
+    if (lastSpinTime == null) {
+      return true;
+    }
+
+    DateTime lastSpinDateTime =
+        DateTime.fromMillisecondsSinceEpoch(lastSpinTime);
+    DateTime now = DateTime.now();
+
+    return now.difference(lastSpinDateTime).inHours >= 24;
   }
 
   Future<void> _updateUserData(double balance) async {

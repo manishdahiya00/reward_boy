@@ -11,7 +11,8 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   String name = "";
-  String image = "";
+  String image =
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F5%2FUser-Profile-PNG-Clipart.png&f=1&nofb=1&ipt=155e548203b8e103351b46872b319dfdc01dd1a5d430dd873bad0f85b09795d1&ipo=images";
   String email = "";
   @override
   void initState() {
@@ -23,7 +24,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       name = prefs.getString('name') ?? "";
-      image = prefs.getString('image') ?? "";
+      image = prefs.getString('image') ??
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F5%2FUser-Profile-PNG-Clipart.png&f=1&nofb=1&ipt=155e548203b8e103351b46872b319dfdc01dd1a5d430dd873bad0f85b09795d1&ipo=images";
       email = prefs.getString('email') ?? "";
     });
   }
@@ -74,8 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       ClipOval(
                         child: Image(
-                          image:
-                              NetworkImage(image ?? "assets/images/logo.png"),
+                          image: NetworkImage(image),
                           width: 80,
                           height: 80,
                         ),
