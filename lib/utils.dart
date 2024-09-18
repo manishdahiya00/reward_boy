@@ -13,7 +13,7 @@ class Utils {
     String versionName = 'Unknown';
     String versionCode = 'Unknown';
 
-    String baseUrl = "https://bf11-152-58-102-169.ngrok-free.app/api/v1/";
+    String baseUrl = "https://reward-boy-0b06a2c36bfe.herokuapp.com/api/v1/";
 
     if (deviceInfo is AndroidDeviceInfo) {
       deviceId = deviceInfo.model;

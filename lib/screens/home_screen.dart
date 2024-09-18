@@ -8,6 +8,7 @@ import 'package:reward_boy/screens/refer_earn_screen.dart';
 import 'package:reward_boy/screens/spin_wheel_screen.dart';
 import 'package:reward_boy/screens/wallet_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -188,7 +189,7 @@ class _HomeContentState extends State<HomeContent> {
             ),
             const SizedBox(width: 16),
             Text(
-              'RewardBoy',
+              'Quiz Box',
               style: GoogleFonts.roboto(
                 textStyle: const TextStyle(
                   fontSize: 24,
@@ -922,7 +923,7 @@ class _HomeContentState extends State<HomeContent> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "RewardBoy Special",
+                              "Quiz Box Special",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -961,156 +962,156 @@ class _HomeContentState extends State<HomeContent> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "Hot Offerwalls 🔥",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      height: 150,
-                      width: MediaQuery.sizeOf(context).width * 0.3,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Colors.red,
-                            Colors.green,
-                            Colors.blue,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "* * * * *",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                            ),
-                          ),
-                          Image(
-                            image: AssetImage(
-                              "assets/images/logo.png",
-                            ),
-                            height: 70,
-                          ),
-                          Text(
-                            "Pubscale",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 150,
-                      width: MediaQuery.sizeOf(context).width * 0.3,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Colors.red,
-                            Colors.green,
-                            Colors.blue,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "* * * * *",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                            ),
-                          ),
-                          Image(
-                            image: AssetImage(
-                              "assets/images/logo.png",
-                            ),
-                            height: 70,
-                          ),
-                          Text(
-                            "Pubscale",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 150,
-                      width: MediaQuery.sizeOf(context).width * 0.3,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Colors.red,
-                            Colors.green,
-                            Colors.blue,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "* * * * *",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25,
-                            ),
-                          ),
-                          Image(
-                            image: AssetImage(
-                              "assets/images/logo.png",
-                            ),
-                            height: 70,
-                          ),
-                          Text(
-                            "Pubscale",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
+                // const Padding(
+                //   padding: EdgeInsets.all(8.0),
+                //   child: Text(
+                //     "Hot Offerwalls 🔥",
+                //     style: TextStyle(
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.bold,
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(height: 5),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     Container(
+                //       height: 150,
+                //       width: MediaQuery.sizeOf(context).width * 0.3,
+                //       decoration: BoxDecoration(
+                //         borderRadius: BorderRadius.circular(5),
+                //         gradient: const LinearGradient(
+                //           colors: [
+                //             Colors.red,
+                //             Colors.green,
+                //             Colors.blue,
+                //           ],
+                //           begin: Alignment.topLeft,
+                //           end: Alignment.bottomRight,
+                //         ),
+                //       ),
+                //       child: const Column(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         crossAxisAlignment: CrossAxisAlignment.center,
+                //         children: [
+                //           Text(
+                //             "* * * * *",
+                //             style: TextStyle(
+                //               color: Colors.white,
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 25,
+                //             ),
+                //           ),
+                //           Image(
+                //             image: AssetImage(
+                //               "assets/images/logo.png",
+                //             ),
+                //             height: 70,
+                //           ),
+                //           Text(
+                //             "Pubscale",
+                //             style: TextStyle(
+                //               color: Colors.white,
+                //               fontWeight: FontWeight.w500,
+                //               fontSize: 18,
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //     Container(
+                //       height: 150,
+                //       width: MediaQuery.sizeOf(context).width * 0.3,
+                //       decoration: BoxDecoration(
+                //         borderRadius: BorderRadius.circular(5),
+                //         gradient: const LinearGradient(
+                //           colors: [
+                //             Colors.red,
+                //             Colors.green,
+                //             Colors.blue,
+                //           ],
+                //           begin: Alignment.topLeft,
+                //           end: Alignment.bottomRight,
+                //         ),
+                //       ),
+                //       child: const Column(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         crossAxisAlignment: CrossAxisAlignment.center,
+                //         children: [
+                //           Text(
+                //             "* * * * *",
+                //             style: TextStyle(
+                //               color: Colors.white,
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 25,
+                //             ),
+                //           ),
+                //           Image(
+                //             image: AssetImage(
+                //               "assets/images/logo.png",
+                //             ),
+                //             height: 70,
+                //           ),
+                //           Text(
+                //             "Pubscale",
+                //             style: TextStyle(
+                //               color: Colors.white,
+                //               fontWeight: FontWeight.w500,
+                //               fontSize: 18,
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //     Container(
+                //       height: 150,
+                //       width: MediaQuery.sizeOf(context).width * 0.3,
+                //       decoration: BoxDecoration(
+                //         borderRadius: BorderRadius.circular(5),
+                //         gradient: const LinearGradient(
+                //           colors: [
+                //             Colors.red,
+                //             Colors.green,
+                //             Colors.blue,
+                //           ],
+                //           begin: Alignment.topLeft,
+                //           end: Alignment.bottomRight,
+                //         ),
+                //       ),
+                //       child: const Column(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         crossAxisAlignment: CrossAxisAlignment.center,
+                //         children: [
+                //           Text(
+                //             "* * * * *",
+                //             style: TextStyle(
+                //               color: Colors.white,
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 25,
+                //             ),
+                //           ),
+                //           Image(
+                //             image: AssetImage(
+                //               "assets/images/logo.png",
+                //             ),
+                //             height: 70,
+                //           ),
+                //           Text(
+                //             "Pubscale",
+                //             style: TextStyle(
+                //               color: Colors.white,
+                //               fontWeight: FontWeight.w500,
+                //               fontSize: 18,
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // const SizedBox(height: 10),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -1124,7 +1125,7 @@ class _HomeContentState extends State<HomeContent> {
                   ),
                   child: const ListTile(
                     leading: Icon(
-                      Icons.social_distance,
+                      Icons.favorite_outline_outlined,
                       color: Colors.white,
                       size: 40,
                     ),
@@ -1146,38 +1147,47 @@ class _HomeContentState extends State<HomeContent> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    gradient: const LinearGradient(
-                      colors: [
-                        Colors.green,
-                        Color.fromARGB(255, 18, 184, 26),
-                        Color.fromARGB(255, 3, 109, 16),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                  ),
-                  child: const ListTile(
-                    leading: Icon(
-                      Icons.social_distance,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                    title: Text(
-                      "Support !",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                InkWell(
+                  onTap: () async {
+                    const url =
+                        'https://reward-boy-0b06a2c36bfe.herokuapp.com/contact.html';
+                    if (!await launchUrl(Uri.parse(url))) {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: const LinearGradient(
+                        colors: [
+                          Colors.green,
+                          Color.fromARGB(255, 18, 184, 26),
+                          Color.fromARGB(255, 3, 109, 16),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
                       ),
                     ),
-                    subtitle: Text(
-                      "RewardBoy always helps you.",
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 10,
+                    child: const ListTile(
+                      leading: Icon(
+                        Icons.help_outline_outlined,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      title: Text(
+                        "Support !",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "Quiz Box always helps you.",
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 10,
+                        ),
                       ),
                     ),
                   ),

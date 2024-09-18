@@ -1,6 +1,6 @@
 {
-    "name": "reward_boy",
-    "short_name": "reward_boy",
+    "name": "Quiz Box",
+    "short_name": "Quiz Box",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

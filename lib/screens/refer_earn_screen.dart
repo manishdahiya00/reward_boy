@@ -115,7 +115,7 @@ class _ReferEarnScreenState extends State<ReferEarnScreen> {
                         onPressed: () async {
                           try {
                             await Share.share(
-                              'Join RewardBuddy and let the rewards come to you—sign up today and start earning! http://192.168.145.141:3000/invite',
+                              'Join QuizBox and let the rewards come to you—sign up today and start earning! https://reward-boy-0b06a2c36bfe.herokuapp.com',
                             );
                           } catch (e) {
                             print('Error sharing: $e');
@@ -146,7 +146,7 @@ class _ReferEarnScreenState extends State<ReferEarnScreen> {
               _buildStep(
                 icon: Icons.share,
                 title: "Refer Friends",
-                description: "Invite your friends to RewardBoy.",
+                description: "Invite your friends to Quiz Box.",
               ),
               const SizedBox(height: 20),
               _buildStep(

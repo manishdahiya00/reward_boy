@@ -152,7 +152,7 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.04),
               Text(
-                'Welcome to RewardBoy!',
+                'Welcome to Quiz Box!',
                 style: TextStyle(
                   fontSize: size.width * 0.07,
                   color: Colors.white,

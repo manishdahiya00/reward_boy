@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -208,47 +209,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 50),
                 InkWell(
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            gradient: const LinearGradient(
-                              colors: [
-                                Colors.purple,
-                                Colors.pink,
-                                Colors.red,
-                              ],
-                            ),
-                          ),
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              size: 20,
-                              Icons.thumb_up,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        const Text(
-                          "Rate Us",
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                InkWell(
-                  onTap: () {},
+                  onTap: () async {
+                    const url =
+                        'https://reward-boy-0b06a2c36bfe.herokuapp.com/privacy.html';
+                    if (!await launchUrl(Uri.parse(url))) {
+                      throw 'Could not launch $url';
+                    }
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -288,7 +255,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 20),
                 InkWell(
-                  onTap: () {},
+                  onTap: () async {
+                    const url =
+                        'https://reward-boy-0b06a2c36bfe.herokuapp.com/terms.html';
+                    if (!await launchUrl(Uri.parse(url))) {
+                      throw 'Could not launch $url';
+                    }
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -316,7 +289,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         const SizedBox(width: 20),
                         const Text(
-                          "Terms And Conditions",
+                          "Terms & Conditions",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                InkWell(
+                  onTap: () async {
+                    const url =
+                        'https://reward-boy-0b06a2c36bfe.herokuapp.com/contact.html';
+                    if (!await launchUrl(Uri.parse(url))) {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            gradient: const LinearGradient(
+                              colors: [
+                                Colors.purple,
+                                Colors.pink,
+                                Colors.red,
+                              ],
+                            ),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              size: 20,
+                              Icons.contact_support,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        const Text(
+                          "Contact Us",
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,

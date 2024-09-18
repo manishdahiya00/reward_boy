@@ -1,3 +1,3 @@
-# reward_boy
+# Quiz Box
 
 A new Flutter project.
