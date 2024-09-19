@@ -7,9 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class PayoutScreen extends StatefulWidget {
   final List<dynamic> payoutItems;
   final String image;
+  final String title;
 
   const PayoutScreen(
-      {super.key, required this.payoutItems, required this.image});
+      {super.key,
+      required this.payoutItems,
+      required this.image,
+      required this.title});
 
   @override
   State<PayoutScreen> createState() => _PayoutScreenState();
@@ -81,7 +85,11 @@ class _PayoutScreenState extends State<PayoutScreen> {
               TextField(
                 controller: _controller,
                 decoration: InputDecoration(
-                  hintText: "Enter your UPI ID",
+                  hintText: widget.title == "Insta Followers"
+                      ? "Enter your instagram ID"
+                      : widget.title == "Play Store"
+                          ? "Enter your email."
+                          : "Enter your UPI ID",
                   hintStyle: const TextStyle(color: Colors.white),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
@@ -102,7 +110,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                 final enteredUpiId = _controller.text;
                 final amount = widget.payoutItems[index];
                 if (enteredUpiId.isEmpty) {
-                  _showToast('Please enter a valid UPI ID.');
+                  _showToast('Please enter valid value.');
                 } else {
                   _redeemSubmitAPI(index, enteredUpiId, amount.toString());
                   Navigator.of(context).pop();
@@ -158,12 +166,14 @@ class _PayoutScreenState extends State<PayoutScreen> {
         ),
         itemCount: widget.payoutItems.length,
         itemBuilder: (context, index) {
+          final title = widget.title;
           final amount = widget.payoutItems[index];
           return InkWell(
             onTap: () {
               _showRedeemDialog(index);
             },
             child: Card(
+              color: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.0),
               ),
@@ -188,6 +198,18 @@ class _PayoutScreenState extends State<PayoutScreen> {
                     child: Text(
                       '₹ $amount',
                       style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Positioned(
+                    top: 8,
+                    left: 8,
+                    child: Text(
+                      title == "Insta Followers"
+                          ? "${(double.parse(amount) / 100).toStringAsFixed(0)} followers"
+                          : "",
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],

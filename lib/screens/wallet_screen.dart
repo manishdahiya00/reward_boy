@@ -217,6 +217,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                 builder: (context) => PayoutScreen(
                                   payoutItems: payout['amounts'],
                                   image: payout["image"],
+                                  title: payout["title"],
                                 ),
                               ),
                             );
